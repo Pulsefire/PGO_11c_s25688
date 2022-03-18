@@ -1,5 +1,7 @@
 package lab;
 
+import java.util.Scanner;
+
 public class Main {
     public static int random() { //Generate random number from 100 to 1000
         return (int) (Math.random() * 900) + 100;
@@ -32,7 +34,7 @@ public class Main {
         }
     }
 
-    public static void main(String[] args) {
+    public static void exc6(){
         int[] arr = new int[10];
         for (int i = 0; i < 10; i++) { //fill array
             arr[i] = random();
@@ -40,5 +42,28 @@ public class Main {
         printArray("Generated array: ", arr);
         sortArray(arr);
         printArray("Sorted array: ", arr);
+    }
+    public static void main(String[] args) {
+        Scanner getText= new Scanner(System.in);
+        boolean errorNumber = false;
+        System.out.print("Podaj liczbe wieksza od 5 i nieparzysta: ");
+        int n;
+        do{
+            if(errorNumber){
+                System.out.print("Blad podaj poprawna liczbe!: ");
+            }
+            n = getText.nextInt();
+            errorNumber = true;
+        }while (n < 5 && n % 2 == 0);
+        for(int i = 0; i < n; i++){
+            for(int j = 0; j < n; j++){
+                if(i == 0 || i == n - 1 || i == j || j == 0 || j == n - 1) {
+                    System.out.print("*");
+                }else{
+                    System.out.print(" ");
+                }
+            }
+            System.out.print("\n");
+        }
     }
 }
