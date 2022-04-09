@@ -34,7 +34,7 @@ public class Library {
     void addPersonToRegister(String name, String surname, Date dateOfBrith, Address address){
         Person person = new Person(this.personRegister.size(), name, surname, dateOfBrith, address);
         this.personRegister.add(person);
-        System.out.println("Success, person add to library");
+        //System.out.println("Success, person add to library");
     }
 
     //Book
@@ -57,7 +57,7 @@ public class Library {
     //Add in code
     void addBookToRegister(String name, Genre genre, Lang language, long authorId, Date publishDate){
         this.bookRegister.add(personRegister.get((int)authorId).PublishBook(this.bookRegister.size(), name, genre, language, authorId, publishDate));
-        System.out.println("Success, book add to library");
+        //System.out.println("Success, book add to library");
     }
 
 
@@ -102,7 +102,7 @@ public class Library {
 
     void addBorrowToRegister(long borrowerId, long bookId){
         if(!this.bookRegister.get((int) bookId).isAvailable){
-            System.out.println("Book is not Available jet, wait until: " + whenBorrowLimitExpire(bookId));
+            System.out.println("Book is not available jet, wait until: " + whenBorrowLimitExpire(bookId));
             System.out.println("The borrower is: " + this.personRegister.get((int)whoBorrowBook(bookId)).getShortData());
             return;
         }
@@ -111,7 +111,7 @@ public class Library {
         System.out.println("Book: ");
         System.out.println(this.bookRegister.get((int)bookId).getShortData());
         this.bookRegister.get((int)bookId).BorrowBook();
-        this.borrowRegister.add(new BorrowEntry((long)this.borrowRegister.size(), borrowerId, bookId));
+        this.borrowRegister.add(new BorrowEntry(this.borrowRegister.size(), borrowerId, bookId));
         System.out.println("Success, borrow entry add!");
     }
 
@@ -149,5 +149,13 @@ public class Library {
         }
         this.borrowRegister.get((int)entryOfLastBorrow(bookId)).expandBorrowDateLimit();
         System.out.println("Success, book borrow time limit expand!");
+    }
+
+    void printPersonRegister(){
+        this.personRegister.forEach(person -> System.out.println(person.personToString()));
+    }
+
+    void printBookRegister(){
+        this.bookRegister.forEach(book -> System.out.println(book.bookToString()));
     }
 }

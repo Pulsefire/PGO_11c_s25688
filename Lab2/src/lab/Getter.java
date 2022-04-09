@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Getter {
@@ -29,11 +30,7 @@ public class Getter {
     public static boolean isLeapYear(int year) {
         if (year % 4 == 0) {
             if (year % 100 == 0) {
-                if (year % 400 == 0) {
-                    return true;
-                } else {
-                    return false;
-                }
+                return year % 400 == 0;
             } else {
                 return true;
             }
@@ -87,7 +84,12 @@ public class Getter {
             }
             System.out.print("[" + message + "]: ");
             Scanner scan = new Scanner(System.in);
-            buf = scan.nextInt();
+            try{
+                buf = scan.nextInt();
+            }catch(InputMismatchException IMmE){
+                buf = from-1;
+                System.out.println("Error - is not a number");
+            }
             flag = true;
         } while (!(buf >= from && buf <= to));
         return buf;
