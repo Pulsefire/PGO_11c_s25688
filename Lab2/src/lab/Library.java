@@ -107,8 +107,8 @@ public class Library {
             return;
         }
         System.out.println("Creating entry about new book borrow");
-        System.out.println("Borrower: [id]: " + borrowerId + " [name]: " + personRegister.get((int)borrowerId).getName() + " " + personRegister.get((int)borrowerId).getSurname());
-        System.out.println("Book: ");
+        System.out.println("Borrower: id: " + borrowerId + " name: " + personRegister.get((int)borrowerId).getName() + " " + personRegister.get((int)borrowerId).getSurname());
+        System.out.print("Book: ");
         System.out.println(this.bookRegister.get((int)bookId).getShortData());
         this.bookRegister.get((int)bookId).BorrowBook();
         this.borrowRegister.add(new BorrowEntry(this.borrowRegister.size(), borrowerId, bookId));
