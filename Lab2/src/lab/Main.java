@@ -23,7 +23,6 @@ public class Main {
         clearScreen();
         System.out.println("Welcome");
         System.out.println("Library system v1.0001");
-
     }
 
     public static void loopMessage(){
